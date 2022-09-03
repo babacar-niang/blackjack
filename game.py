@@ -60,6 +60,7 @@ def play(bank, player):
     player.cards.append(c1_human)
     player.cards.append(c2_human)
     while player.stop == False:
+        time.sleep(.8)
         print(f'{bank.label} :\n Total cards value: {bank.get_total_cards_value()}')
         print_cards(bank)
         print('')
@@ -72,7 +73,7 @@ def play(bank, player):
         if move in ['hit', 'h', 'H']:
             rand_card = Card(choice(suits), choice(types), state='faceup')
             player.cards.append(rand_card)
-            if player.get_total_cards_value() > 21:
+            if player.get_total_cards_value() >= 21:
                 break
 
     c1_bank.state = 'faceup'
@@ -92,7 +93,7 @@ def play(bank, player):
         print(f'{player.label}:\nTotal cards value: {player.get_total_cards_value()}')
         print_cards(player)
         print('')
-        print('Blackjack!!! {player.label} has won')
+        print(f'Blackjack!!! {player.label} has won')
         return player.label
 
 
