@@ -42,7 +42,7 @@ def print_cards(player):
     rows1 = [player.cards[i].display_cards()[1] for i in range(len(player.cards))]
     rows2 = [player.cards[i].display_cards()[2] for i in range(len(player.cards))]
     rows3 = [player.cards[i].display_cards()[3] for i in range(len(player.cards))]
-    print('  '.join(rows0))
+    print('  '.join(rows0) + '  ')
     print('  '.join(rows1))
     print('  '.join(rows2))
     print('  '.join(rows3))
@@ -60,7 +60,7 @@ def play(bank, player):
     player.cards.append(c1_human)
     player.cards.append(c2_human)
     while player.stop == False:
-        time.sleep(.8)
+        time.sleep(1)
         print(f'{bank.label} :\n Total cards value: {bank.get_total_cards_value()}')
         print_cards(bank)
         print('')
@@ -98,12 +98,13 @@ def play(bank, player):
 
 
     while bank.stop == False:
-        time.sleep(.8)
+        time.sleep(1)
         print(f'{bank.label} :\n Total cards value: {bank.get_total_cards_value()}')
         print_cards(bank)
         print('')
         print(f'{player.label} :\n Total cards value: {player.get_total_cards_value()}')
         print_cards(player)
+        print('')
         move = ''
         while move not in ['hit', 'h', 'H','stand', 's', 'S']:
             move = bank.get_move()
